@@ -36,6 +36,6 @@ class Route{
             ('This method does not exist');
         }
         
-        call_user_func([new $class, $action]);
+        call_user_func([new $class, $action], new Request());
     }
 }
