@@ -9,6 +9,19 @@ class Route{
     {
         self::$prefix = $value;
     }
+    public function redirect(string $url): void
+    {
+    header('Location: ' . $this->getUrl($url));
+    }
+
+    public function getUrl(string $url): string
+    {
+    return self::$prefix . $url;
+    }
+    public function __construct(string $prefix = '')
+    {
+    self::setPrefix($prefix);
+    }
     public static function add(string $route, array $action):void
     {
         if(!array_key_exists($route, self::$routes)){
