@@ -1,0 +1,71 @@
+@import url(./fonts.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 300;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+
+main {
+    margin: 46px 0 0 114px;
+}
+
+h2 {
+    font-family: 'Soyuz', sans-serif;
+    font-size: 120px;
+    line-height: 30%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.sidebar {
+    width: 241px;
+    height: 100vh;
+    border-right: #000 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nav {
+    padding-top: 46px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    margin-left: 47px;
+    font-size: 16px;
+}
+
+.btn-logout {
+    display: block;
+    width: 122px;
+    margin: 46px ;
+    padding: 15px 20px 15px 46px;
+    background: url('../img/logout.svg') no-repeat 16px center / 25px;
+    border-radius: 100px;
+    border: 1px solid #000;
+}
+
+.login-form {
+    margin-top: 100px;
+}
+
+.login-form > label > input {
+    outline: none;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 18px;
+    height: 30px;
+}

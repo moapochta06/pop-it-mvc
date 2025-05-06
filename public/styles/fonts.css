@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Unbounded';
+    src: url(../fonts/Unbounded-Light.ttf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Unbounded';
+    src: url(../fonts/Unbounded-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Soyuz';
+    src: url(../fonts/Soyuz_Grotesk_Bold.otf);
+}

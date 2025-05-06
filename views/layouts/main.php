@@ -1,30 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, user-scalable=no, initial-
-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Main site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-
+    scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/styles.css?v=1.0.1">
+    <title>Main site</title>
 </head>
 <body>
 <header>
-   <nav>
-       <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
-       <?php
-       if (!app()->auth::check()):
-           ?>
-           <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-           <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
-       <?php
-       else:
-           ?>
-           <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-       <?php
-       endif;
-       ?>
-   </nav>
+<?php
+    if (app()->auth::check()):
+    ?>
+<div class="sidebar">
+    <nav>
+        <a href="<?= app()->route->getUrl('/hello') ?>">Кафедры</a>
+        <a href="<?= app()->route->getUrl('/hello') ?>">Сотрудники</a>
+        <a href="<?= app()->route->getUrl('/hello') ?>">Дисциплины</a>
+    </nav>
+    <?php
+    endif;
+    ?>
+    <?php
+        if (!app()->auth::check()):
+            ?>
+            <!-- <a class="btn-login" href="<?= app()->route->getUrl('/login') ?>">Вход</a> -->
+            <!-- <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a> -->
+        <?php
+        else:
+            ?>
+            <a class="btn btn-logout" href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
+        <?php
+        endif;
+        ?>
+</div>
 </header>
 <main>
    <?= $content ?? '' ?>
