@@ -10,7 +10,7 @@ body {
     font-family: 'Unbounded', sans-serif;
     font-weight: 300;
     background-color: #f4f4f4;
-    color: #333;
+    color: #000;
     display: flex;
     height: 100vh;
 }
@@ -23,6 +23,14 @@ h2 {
     font-family: 'Soyuz', sans-serif;
     font-size: 120px;
     line-height: 30%;
+    margin-bottom: 50px;
+}
+
+h3 {
+    font-family: 'Soyuz', sans-serif;
+    font-size:48px;
+    line-height: 30%;
+    margin-bottom: 65px;
 }
 
 a {
@@ -49,7 +57,6 @@ nav {
 }
 
 .btn-logout {
-    display: block;
     width: 122px;
     margin: 46px ;
     padding: 15px 20px 15px 46px;
@@ -58,14 +65,89 @@ nav {
     border: 1px solid #000;
 }
 
+.btn-login {
+    color: #f4f4f4;
+    background: #000;
+    font-family: 'Unbounded', sans-serif;
+    border-radius: 100px;
+    border: 1px solid #000;
+    padding: 15px 25px;
+}
+.dep-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #D6E0F4;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 300;
+    border-radius: 100px;
+    border: 1px solid #000;
+    width: 262px;
+    height: 58px;
+    margin-top: 43px;
+}
+
+.dep-btn > span {
+    margin-right: 12px;
+}
+
 .login-form {
     margin-top: 100px;
 }
 
 .login-form > label > input {
+    margin-right: 20px;
     outline: none;
     padding: 10px;
     border: 1px solid #000;
     border-radius: 18px;
     height: 30px;
 }
+
+/* Стили для таблицы */
+.department-table {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 15px;
+    border-collapse: collapse;
+    width: 620px;
+}
+
+/* Шапка таблицы */
+.table-header {
+    display: flex;
+}
+
+.table-header span {
+    flex: 1;
+    padding: 28px 0 14px 0;
+    border-bottom: 1px solid #000;
+    text-align: left;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.table-header span:first-of-type {
+    padding: 28px 0 0 19px;
+    flex: 2;
+}
+
+/* Строка таблицы */
+.table-row {
+    display: flex;
+}
+
+.table-row span {
+    flex: 1;
+    padding: 24px 19px;
+    font-weight: 400;
+}
+
+.table-row span:first-of-type{
+    flex: 2;
+    padding: 24px 19px;
+    border-right: 1px solid #000;
+}
+

@@ -6,7 +6,7 @@
     content="width=device-width, user-scalable=no, initial-
     scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/styles.css?v=1.0.1">
+    <link rel="stylesheet" href="styles/styles.css?v=1.0.4">
     <title>Main site</title>
 </head>
 <body>
@@ -16,9 +16,9 @@
     ?>
 <div class="sidebar">
     <nav>
-        <a href="<?= app()->route->getUrl('/hello') ?>">Кафедры</a>
+        <a href="<?= app()->route->getUrl('/departments') ?>">Кафедры</a>
         <a href="<?= app()->route->getUrl('/hello') ?>">Сотрудники</a>
-        <a href="<?= app()->route->getUrl('/hello') ?>">Дисциплины</a>
+        <a href="<?= app()->route->getUrl('/subjects') ?>">Дисциплины</a>
     </nav>
     <?php
     endif;
@@ -31,7 +31,7 @@
         <?php
         else:
             ?>
-            <a class="btn btn-logout" href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
+            <a class="btn-logout" href="<?= app()->route->getUrl('/logout') ?>">Выход</a>
         <?php
         endif;
         ?>
