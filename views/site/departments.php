@@ -10,16 +10,24 @@
         </div>
     <?php endif; ?>
 
-    <form method="POST" action="/departments">
+    <form method="POST">
         <label>
             Название:
-            <input type="text" name="name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+            <input type="text" name="name" value="<?= htmlspecialchars($old['name'] ?? '') ?>">
         </label>
 
         <label>
             Аббревиатура:
-            <input type="text" name="abbreviation" maxlength="10" value="<?= htmlspecialchars($_POST['abbreviation'] ?? '') ?>">
+            <input type="text" name="abbreviation" maxlength="10" value="<?= htmlspecialchars($old['abbreviation'] ?? '') ?>">
         </label>
+        <div class="subjects">
+        <?php foreach ($subjects as $subject): ?>
+            <label>
+                <input type="checkbox" name="subjects[]" value="<?= htmlspecialchars($subject->id) ?>">
+                <?= htmlspecialchars($subject->name) ?>
+            </label>
+        <?php endforeach; ?>
+        </div>
 
         <button type="submit">Сохранить</button>
     </form>
@@ -28,7 +36,7 @@
 <?php else: ?>
     <h2>Кафедры</h2>
     <form method="GET">
-        <button type="submit" name="show_form" value="1" class="dep-btn">
+        <button type="submit" name="show_form" value="1" class="button dep-btn">
             <span>Добавить кафедру</span>
             <img src="img/plus.svg" alt="+" width="22" height="22">
         </button>

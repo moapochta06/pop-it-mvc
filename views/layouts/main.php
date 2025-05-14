@@ -6,7 +6,7 @@
     content="width=device-width, user-scalable=no, initial-
     scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/styles.css?v=1.0.4">
+    <link rel="stylesheet" href="/pop-it-mvc/public/styles/styles.css?v=1.0.12">
     <title>Main site</title>
 </head>
 <body>

@@ -9,7 +9,7 @@
 body {
     font-family: 'Unbounded', sans-serif;
     font-weight: 300;
-    background-color: #f4f4f4;
+    background-color: #FEFEFE;
     color: #000;
     display: flex;
     height: 100vh;
@@ -73,22 +73,40 @@ nav {
     border: 1px solid #000;
     padding: 15px 25px;
 }
-.dep-btn {
+.button{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #D6E0F4;
     font-family: 'Unbounded', sans-serif;
     font-weight: 300;
     border-radius: 100px;
     border: 1px solid #000;
     width: 262px;
     height: 58px;
-    margin-top: 43px;
+    margin-top: 38px;
 }
 
-.dep-btn > span {
+.add-dis-btn {
+    background: #000;
+    color: #fff;
+}
+
+.choice-btn {
+    background: #F3E0FF;
+    margin-right: 25px;
+}
+
+.dep-btn {
+    background: #D6E0F4;
+}
+
+.dep-btn > span, .choice-btn > span {
     margin-right: 12px;
+}
+
+.add-btn span, .add-btn {
+    font-size: 13.3px;
+    font-weight: 300;
 }
 
 .login-form {
@@ -105,7 +123,7 @@ nav {
 }
 
 /* Стили для таблицы */
-.department-table {
+.department-table, .employees-table, .subjects-table {
     margin-top: 44px;
     display: flex;
     flex-direction: column;
@@ -115,12 +133,20 @@ nav {
     width: 620px;
 }
 
+.employees-table {
+    width: 830px;
+}
+
+.subjects-table {
+    width: 515px;
+}
+
 /* Шапка таблицы */
-.table-header {
+.table-header, .table-header-emp {
     display: flex;
 }
 
-.table-header span {
+.table-header span, .table-header-emp span{
     flex: 1;
     padding: 28px 0 14px 0;
     border-bottom: 1px solid #000;
@@ -130,24 +156,72 @@ nav {
 }
 
 .table-header span:first-of-type {
-    padding: 28px 0 0 19px;
+    padding: 28px 0 14px 19px;
     flex: 2;
 }
 
-/* Строка таблицы */
-.table-row {
-    display: flex;
+.table-header-emp span {
+    padding-left: 16px;
 }
 
-.table-row span {
-    flex: 1;
-    padding: 24px 19px;
+.table-subjects-row {
     font-weight: 400;
 }
 
-.table-row span:first-of-type{
+/* Строка таблицы */
+.table-row, .table-row-emp {
+    display: flex;
+}
+
+.table-row span, .table-row-emp span {
+    flex: 1;
+    padding: 16px 19px;
+    font-weight: 400;
+}
+
+.table-row-emp > span > a {
+    font-size: 12px;
+    text-align: center;
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
+.table-row span:first-of-type, .table-row-emp span:not(:last-child) {
     flex: 2;
-    padding: 24px 19px;
+    padding: 16px 19px;
     border-right: 1px solid #000;
 }
 
+.table-subjects-row {
+    padding: 16px 19px;
+}
+
+.table-row-emp span:not(:last-child){
+    flex: 1;
+}
+
+.has-border:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.employee-details {
+    display: flex;
+    gap: 120px;
+    justify-content: space-between;
+}
+
+.detail-name {
+    font-size: 12px;
+}
+
+.detail-info {
+    margin-top: 11px;
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 70%;
+}
+
+.detail-info ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
