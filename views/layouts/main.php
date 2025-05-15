@@ -12,7 +12,7 @@
 <body>
 <header>
 <?php
-    if (app()->auth::check()):
+    if (app()->auth::check() && app()->auth::user()->roles == !1):
     ?>
 <div class="sidebar">
     <nav>

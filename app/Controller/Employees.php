@@ -84,10 +84,12 @@ class Employees
 
             if (!$employee) app()->route->redirect('/hello');
 
-            if (!empty($subjectIds)) {
-                $employee->subjects()->attach($subjectIds);
+            foreach ($subjectIds as $subjectId) {
+                if (!$employee->subjects->contains($subjectId)) {
+                    $employee->subjects()->attach($subjectId);
+                }
             }
-
+           
             app()->route->redirect("/employee/{$employeeId}");
         }
     }

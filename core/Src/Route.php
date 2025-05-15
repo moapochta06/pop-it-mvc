@@ -63,7 +63,7 @@ class Route
        return $this->prefix . $url;
    }
 
-   //Добавление middlewares для текущего маршрута
+//    Добавление middlewares для текущего маршрута
    public function middleware(...$middlewares): self
    {
        Middleware::single()->add($this->currentHttpMethod, $this->currentRoute, $middlewares);

@@ -17,13 +17,7 @@ public function get_subject (): string
 return new View('site.subjects');
 }
 
-public function signup(Request $request): string
-   {
-       if ($request->method==='POST' && User::create($request->all())){
-           return new View('site.signup', ['message'=>'Вы успешно зарегистрированы']);
-       }
-       return new View('site.signup');
-   }
+
    public function login(Request $request): string
    {
       //Если просто обращение к странице, то отобразить форму
@@ -31,9 +25,14 @@ public function signup(Request $request): string
           return new View('site.login');
       }
       //Если удалось аутентифицировать пользователя, то редирект
-      if (Auth::attempt($request->all())) {
-          app()->route->redirect('/hello');
-      }
+      if (Auth::attempt($request->all())){
+        $user = app()->auth::user();
+        if ($user->roles == 1) {
+            app()->route->redirect('/admin-form');
+        } else {
+            app()->route->redirect('/hello');
+        }
+    }
       //Если аутентификация не удалась, то сообщение об ошибке
       return new View('site.login', ['message' => 'Неправильные логин или пароль']);
    }
@@ -41,6 +40,11 @@ public function signup(Request $request): string
 {
    Auth::logout();
    app()->route->redirect('/hello');
+}
+
+public function noAccess(): string
+{
+    return new View('site.no_access');
 }
 
 }

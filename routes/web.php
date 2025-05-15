@@ -2,12 +2,11 @@
 
 use Src\Route;
 
-Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 
 Route::add('GET', '/hello', [Controller\Employees::class, 'index'])
-    ->middleware('auth');
+    ->middleware('auth', 'denyAdmin');
 Route::add('GET', '/employee-form', [Controller\Employees::class, 'showForm'])
     ->middleware('auth');
 Route::add('POST', '/add-employee', [Controller\Employees::class, 'add_employee'])
@@ -27,3 +26,9 @@ Route::add('GET', '/employee/{id}/attach-subjects', [Controller\Employees::class
 Route::add('POST', '/employee/attach-subjects', [Controller\Employees::class, 'saveSubjects'])
 ->middleware('auth');
 
+Route::add('GET', '/admin-form', [Controller\Admin::class, 'add_dean_form'])
+->middleware('admin');
+Route::add('POST', '/add-user', [Controller\Admin::class, 'add_dean_user'])
+->middleware('admin');
+
+Route::add('GET', '/no-access', [Controller\Site::class, 'noAccess']);
