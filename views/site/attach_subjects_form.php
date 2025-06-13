@@ -1,6 +1,7 @@
 <h3>Выберите дисциплины для <?= htmlspecialchars($employee->last_name) ?></h3>
 
 <form method="POST" action="<?= app()->route->getUrl('/employee/attach-subjects') ?>">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <input type="hidden" name="employee_id" value="<?= $employee->id ?>">
 
     <?php foreach ($subjects as $subject): ?>

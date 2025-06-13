@@ -1,6 +1,7 @@
 <h3>Новый сотрудник деканата</h3>
 <p><?= $message ?? ''; ?></p>
 <form method="POST" action="<?= app()->route->getUrl('/add-user') ?>">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <div>
         <label for="name">Имя:</label>
         <input type="text" name="name" id="name" required>

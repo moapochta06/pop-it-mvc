@@ -1,6 +1,8 @@
 <h3>добавление сотрудника</h3>
+    <pre><?= $message ?? ''; ?></pre>
 
-<form action="<?= app()->route->getUrl('/add-employee') ?>" method="POST">
+<form action="<?= app()->route->getUrl('/add-employee') ?>" method="POST"  enctype="multipart/form-data">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <div class="form-group">
         <label for="last_name">Фамилия:</label>
         <input type="text" name="last_name" id="last_name" required>
@@ -41,6 +43,9 @@
             <?php endforeach; ?>
         </select>
     </div>
-
+    <div>
+        <label for="img">Фото</label>
+        <input type="file" name="img" id="img">
+    </div>
     <button type="submit" class="btn-submit">Сохранить</button>
 </form>

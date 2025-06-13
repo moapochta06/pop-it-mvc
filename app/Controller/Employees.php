@@ -7,6 +7,7 @@ use Src\Request;
 use Model\Department;
 use Model\Employee;
 use Model\Subject;
+use Src\Validator\Validator;
 
 class Employees
 {
@@ -26,13 +27,72 @@ class Employees
             'departments' => $departments
         ]);
     }
-    public function add_employee(Request $request)
-    {
-        if ($request->method === 'POST') {
-            Employee::create($request->all());
+    public function add_employee(Request $request): string
+{
+    if ($request->method === 'POST') {
+        $validator = new Validator($request->all(), [
+            'last_name' => ['required'],
+            'first_name' => ['required'],
+            'gender' => ['required'],
+            'birth_date' => ['required'],
+            'department_id' => ['required'],
+            'img' => ['image', 'max_file_size:600']
+        ], [
+            'required' => 'Поле :field обязательно',
+            'image' => 'Файл должен быть изображением',
+            'max_file_size' => 'Размер файла не должен превышать :max_file_size KB'
+        ]);
 
-            app()->route->redirect('/hello');
+        if ($validator->fails()) {
+            return new View('site.employee_form', [
+                'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)
+            ]);
         }
+
+        $data = $request->except(['img']);
+        $employee = Employee::create($data);
+        
+        if (!empty($_FILES['img']['name'])) {
+            $this->saveAvatar($employee, $_FILES['img']); 
+        }
+    }
+
+    return new View('site.hello');
+}
+    private function saveAvatar($employee, $file): void
+    {
+        $uploadDir = __DIR__ . '/../../public/uploads/';
+
+        // Генерируем уникальное имя
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = uniqid('avatar_') . '.' . $extension;
+
+        if (move_uploaded_file($file['tmp_name'], $uploadDir . $filename)) {
+            $employee->update(['avatar' => '/uploads/' . $filename]);
+        } else {
+            $_SESSION['errors']['img'][] = 'Ошибка при сохранении файла';
+            app()->route->redirect('/add-employee');
+        }
+    }
+    public function search(Request $request): string
+    {
+        $validator = new Validator($request->all(), [
+            'query' => ['required', 'max:4']
+        ], [
+            'required' => 'Поле :field не должно быть пустым',
+            'max' => 'Поле :field должно содержать не более :max символов'
+        ]);
+         if($validator->fails()){
+            return new View('site.hello',
+                ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+        }
+        $query = $request->get('query');
+        $employees = Employee::search($query);
+
+        return new View('site.hello', [
+            'employees' => $employees,
+            'search_query' => $query
+        ]);
     }
     public function get_employee(string $id): string
     {
@@ -41,7 +101,6 @@ class Employees
         if (!$id) {
             app()->route->redirect('/hello');
         }
-    
         $employee = Employee::find($id);
     
         if (!$employee) {

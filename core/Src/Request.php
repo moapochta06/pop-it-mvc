@@ -37,6 +37,17 @@ class Request
        return $_FILES;
    }
 
+   public function except(array $keys): array
+    {
+        $data = $this->all();
+
+        foreach ($keys as $key) {
+            unset($data[$key]);
+        }
+
+        return $data;
+    }
+
    public function __get($key)
    {
        if (array_key_exists($key, $this->body)) {

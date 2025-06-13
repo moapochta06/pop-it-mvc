@@ -23,6 +23,7 @@ class Employee extends Model
         'position_id',
         'department_id',
         'role_id',
+        'avatar',
     ];
 
     //связь с таблицей departments
@@ -37,6 +38,17 @@ class Employee extends Model
     public static function find(int $id)
     {
         return self::with('department', 'subjects')->where('id', $id)->first();
+    }
+    public static function search(string $query)
+    {
+        return self::where('last_name', 'LIKE', "%$query%")
+            ->orWhere('first_name', 'LIKE', "%$query%")
+            ->orWhere('patronymic', 'LIKE', "%$query%")
+            ->orWhereHas('department', function ($q) use ($query) {
+                $q->where('name', 'LIKE', "%$query%")
+                ->orWhere('abbreviation', 'LIKE', "%$query%");
+            })
+            ->get();
     }
     // public function position()
     // {

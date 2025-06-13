@@ -9,6 +9,7 @@
 <?php endif; ?>
 
 <form method="POST" action="/departments">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label>
         Название:
         <input type="text" name="name" />

@@ -34,6 +34,14 @@ class Auth
        }
        return false;
    }
+   //Генерация нового токена для CSRF
+    public static function generateCSRF(): string
+    {
+    $token = md5(time());
+    Session::set('csrf_token', $token);
+    return $token;
+    }
+
 
    //Возврат текущего аутентифицированного пользователя
    public static function user()
