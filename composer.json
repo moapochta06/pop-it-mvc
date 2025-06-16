@@ -14,7 +14,9 @@
         "php": "^7.4 | ^8.1",
         "illuminate/database": "^13.0@dev",
         "illuminate/events": "^13.0@dev",
-        "nikic/fast-route": "^2.0@dev"
+        "nikic/fast-route": "^2.0@dev",
+        "moapochta06/collect": "dev-main",
+        "moapochta06/validators": "dev-main"
     },
     "autoload": {
         "psr-4": {

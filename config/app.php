@@ -17,11 +17,11 @@ return [
 
     ],
     'validators' => [
-        'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class,
-        'image' => \Validators\ImageValidator::class,
-        'max_file_size' => \Validators\MaxSizeValidator::class,
-        'max' => \Validators\MaxValidator::class,
-    ]
+        'required' => \validators\Validators\RequireValidator::class,
+        'unique' => \validators\Validators\UniqueValidator::class,
+        'image' => \validators\Validators\ImageValidator::class,
+        'max_file_size' => \validators\Validators\MaxSizeValidator::class,
+        'max' => \validators\Validators\MaxValidator::class,
+    ],
 
 ];
